@@ -5,7 +5,7 @@ Feature: Static testing for Interest Rate Maintenance page
 
 Scenario: Add interest rate
 Given User is in Interest Rate Maintenance screen
-When User provides all mandatory details like Past, GBP - Great British Pound, LIBOR1 12 MONTHS, 4.1, Past dated Rate addition
+When User provides all mandatory details like Past, Great British Pound - GBP, LIBOR1 12 MONTHS, 4.1, Past dated Rate addition
 And Clicks on Update
 Then Provided interest details Past, LIBOR1 12 MONTHS, 4.1 should be added and visible under Historic Dates table
 

@@ -86,17 +86,15 @@ public class CommonComponents extends pageObjects.pageObject.CommonComponents {
 
 	public void selectDropDown(String dropDownElementName) throws InterruptedException {
 		try {
-			System.out.println(getDropDown().size());
-			Thread.sleep(1000);
+//			Thread.sleep(1000);
 			for (int i = 0; i < getDropDown().size(); i++) {
-				System.out.println(getDropDown().get(i).getText());
 				if (getDropDown().get(i).getText().contains(dropDownElementName)) {
 					scriptClick(getDropDown().get(i));
 					break;
 				}
 			}
 		} catch (StaleElementReferenceException e) {
-			Thread.sleep(1000);
+//			Thread.sleep(1000);
 			selectDropDown(dropDownElementName);
 		}
 	}
@@ -149,7 +147,7 @@ public class CommonComponents extends pageObjects.pageObject.CommonComponents {
 	// found.
 	public void validateTableEntry(String baseString, String validationString1, String validationString2)
 			throws InterruptedException {
-		Thread.sleep(1000);
+//		Thread.sleep(1000);
 		indexRatePage.jsPageScrollIntoView(getPaginationNext());
 		int totalRows = Integer.parseInt(getPaginationTotalRows().getText());
 		int rowsPerPage = Integer.parseInt(getPaginationRowsPerPage().getText());

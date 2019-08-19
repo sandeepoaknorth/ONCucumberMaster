@@ -10,5 +10,5 @@ Feature: Static testing for Interest Rate Maintenance page
     Examples: 
       | Business Date | Currency                  | Reference Rate   | Value   | Test Scenario            |
       | Past          | Great British Pound - GBP | LIBOR1 12 MONTHS |     4.1 | Past dated Rate addition |
-      #| Today         | EUR - Euro                | fff              | 6.55555 | Decimal Rate addition    |
-      #| Today         | USD - Us Dollars          | LIBOR 1 Years    |       0 | Zero Rate addition       |
+      | Today         | Euro - EUR                | fff              | 6.55555 | Decimal Rate addition    |
+      | Today         | Us Dollars - USD          | JHWICK 1 MONTHS  |       0 | Zero Rate addition       |

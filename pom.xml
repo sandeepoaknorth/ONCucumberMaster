@@ -180,7 +180,7 @@
                    <!--<sourceRunnerTemplateFile>src/test/resources/cucable.template</sourceRunnerTemplateFile>-->
 
                    <!-- process all features in the given directory -->
-                   <sourceFeatures>src/test/java/resources/dynamicFeatures/InterestRateMaintenance_Dynamic.feature</sourceFeatures>
+                   <sourceFeatures>src/test/java/resources</sourceFeatures>
 
                    <!-- process a specific feature file in the given directory -->
                    <!--<sourceFeatures>src/test/resources/features/testfeature/MyTest9.feature</sourceFeatures>-->
@@ -264,7 +264,7 @@
                    </execution>
                </executions>
                <configuration>
-                   <forkCount>2</forkCount>
+                   <forkCount>1</forkCount>
                    <testFailureIgnore>true</testFailureIgnore>
                </configuration>
            </plugin>
