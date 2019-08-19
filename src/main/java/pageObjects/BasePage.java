@@ -26,8 +26,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.cucumber.listener.Reporter;
-
 import utils.DriverFactory;
 
 public class BasePage extends DriverFactory {
@@ -41,10 +39,11 @@ public class BasePage extends DriverFactory {
 	}
 
 	/**********************************************************************************
-	 **CLICK METHODS
-	 * @throws IOException 
+	 ** CLICK METHODS
+	 * 
+	 * @throws IOException
 	 **********************************************************************************/
-	public void click(WebElement element){
+	public void click(WebElement element) {
 		boolean clicked = false;
 		int attempts = 0;
 		while (!clicked && attempts < 10) {
@@ -54,7 +53,8 @@ public class BasePage extends DriverFactory {
 				clicked = true;
 			} catch (Exception e) {
 				System.out.println("Unable to wait and click on WebElement, Exception: " + e.getMessage());
-				Assert.fail("Unable to wait and click on the WebElement, using locator: " + "<" + element.toString() + ">");
+				Assert.fail(
+						"Unable to wait and click on the WebElement, using locator: " + "<" + element.toString() + ">");
 			}
 			attempts++;
 		}
@@ -66,11 +66,14 @@ public class BasePage extends DriverFactory {
 		while (!clicked && attempts < 10) {
 			try {
 				this.wait.until(ExpectedConditions.elementToBeClickable(by)).click();
-				System.out.println("Successfully clicked on the element using by locator: " + "<" + by.toString() + ">");
+				System.out
+						.println("Successfully clicked on the element using by locator: " + "<" + by.toString() + ">");
 				clicked = true;
 			} catch (Exception e) {
-				System.out.println("Unable to wait and click on the element using the By locator, Exception: " + e.getMessage());
-				Assert.fail("Unable to wait and click on the element using the By locator, element: " + "<"+ by.toString() + ">");
+				System.out.println(
+						"Unable to wait and click on the element using the By locator, Exception: " + e.getMessage());
+				Assert.fail("Unable to wait and click on the element using the By locator, element: " + "<"
+						+ by.toString() + ">");
 			}
 			attempts++;
 		}
@@ -82,17 +85,18 @@ public class BasePage extends DriverFactory {
 			tempWait.until(ExpectedConditions.elementToBeClickable(list)).click();
 			list.sendKeys(textToSearchFor);
 			list.sendKeys(Keys.ENTER);
-			System.out.println("Successfully sent the following keys: " + textToSearchFor + ", to the following WebElement: " + "<" + list.toString() + ">");
+			System.out.println("Successfully sent the following keys: " + textToSearchFor
+					+ ", to the following WebElement: " + "<" + list.toString() + ">");
 		} catch (Exception e) {
-			System.out.println("Unable to send the following keys: " + textToSearchFor + ", to the following WebElement: " + "<" + list.toString() + ">");
+			System.out.println("Unable to send the following keys: " + textToSearchFor
+					+ ", to the following WebElement: " + "<" + list.toString() + ">");
 			Assert.fail("Unable to select the required text from the dropdown menu, Exception: " + e.getMessage());
 		}
 	}
-	
-	public void getGenericdroplist(List<WebElement> genericdroplist, String droplist) throws InterruptedException {
+
+	public void clickDropDownElement(List<WebElement> genericdroplist, String droplist) throws InterruptedException {
 		List<WebElement> droplistvalues = genericdroplist;
 		try {
-			Thread.sleep(2000);
 			for (WebElement w : droplistvalues) {
 				if (w.getText().equalsIgnoreCase(droplist)) {
 					w.click();
@@ -109,19 +113,20 @@ public class BasePage extends DriverFactory {
 			final WebDriverWait customWait = new WebDriverWait(driver, timeout);
 			customWait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(locator)));
 			locator.click();
-			System.out.println("Successfully clicked on the WebElement, using locator: " + "<" + locator + ">"+ ", using a custom Timeout of: " + timeout);
+			System.out.println("Successfully clicked on the WebElement, using locator: " + "<" + locator + ">"
+					+ ", using a custom Timeout of: " + timeout);
 		} catch (Exception e) {
-			System.out.println("Unable to click on the WebElement, using locator: " + "<" + locator + ">" + ", using a custom Timeout of: " + timeout);
+			System.out.println("Unable to click on the WebElement, using locator: " + "<" + locator + ">"
+					+ ", using a custom Timeout of: " + timeout);
 			Assert.fail("Unable to click on the WebElement, Exception: " + e.getMessage());
 		}
 	}
-	
+
 	/**********************************************************************************/
 	/**********************************************************************************/
-	
-	
-	 /**********************************************************************************
-	 **ACTION METHODS
+
+	/**********************************************************************************
+	 ** ACTION METHODS
 	 **********************************************************************************/
 
 	public void actionMoveAndClick(WebElement element) throws Exception {
@@ -129,16 +134,20 @@ public class BasePage extends DriverFactory {
 		try {
 			this.wait.until(ExpectedConditions.elementToBeClickable(element)).isEnabled();
 			ob.moveToElement(element).click().build().perform();
-			System.out.println("Successfully Action Moved and Clicked on the WebElement, using locator: " + "<" + element.toString() + ">");
+			System.out.println("Successfully Action Moved and Clicked on the WebElement, using locator: " + "<"
+					+ element.toString() + ">");
 		} catch (StaleElementReferenceException elementUpdated) {
 			WebElement elementToClick = element;
 			Boolean elementPresent = wait.until(ExpectedConditions.elementToBeClickable(elementToClick)).isEnabled();
 			if (elementPresent == true) {
 				ob.moveToElement(elementToClick).click().build().perform();
-				System.out.println("(Stale Exception) - Successfully Action Moved and Clicked on the WebElement, using locator: " + "<" + element.toString() + ">");
+				System.out.println(
+						"(Stale Exception) - Successfully Action Moved and Clicked on the WebElement, using locator: "
+								+ "<" + element.toString() + ">");
 			}
 		} catch (Exception e) {
-			System.out.println("Unable to Action Move and Click on the WebElement, using locator: " + "<" + element.toString() + ">");
+			System.out.println("Unable to Action Move and Click on the WebElement, using locator: " + "<"
+					+ element.toString() + ">");
 			Assert.fail("Unable to Action Move and Click on the WebElement, Exception: " + e.getMessage());
 		}
 	}
@@ -150,33 +159,52 @@ public class BasePage extends DriverFactory {
 			if (elementPresent == true) {
 				WebElement elementToClick = driver.findElement(element);
 				ob.moveToElement(elementToClick).click().build().perform();
-				System.out.println("Action moved and clicked on the following element, using By locator: " + "<" + element.toString() + ">");
+				System.out.println("Action moved and clicked on the following element, using By locator: " + "<"
+						+ element.toString() + ">");
 			}
 		} catch (StaleElementReferenceException elementUpdated) {
 			WebElement elementToClick = driver.findElement(element);
 			ob.moveToElement(elementToClick).click().build().perform();
-			System.out.println("(Stale Exception) - Action moved and clicked on the following element, using By locator: "+ "<" + element.toString() + ">");
+			System.out
+					.println("(Stale Exception) - Action moved and clicked on the following element, using By locator: "
+							+ "<" + element.toString() + ">");
 		} catch (Exception e) {
-			System.out.println("Unable to Action Move and Click on the WebElement using by locator: " + "<" + element.toString() + ">");
-			Assert.fail("Unable to Action Move and Click on the WebElement using by locator, Exception: " + e.getMessage());
+			System.out.println("Unable to Action Move and Click on the WebElement using by locator: " + "<"
+					+ element.toString() + ">");
+			Assert.fail(
+					"Unable to Action Move and Click on the WebElement using by locator, Exception: " + e.getMessage());
 		}
 	}
 
 	/**********************************************************************************/
 	/**********************************************************************************/
 
-	
 	/**********************************************************************************
-	 **SEND KEYS METHODS /
+	 ** SEND KEYS METHODS /
 	 **********************************************************************************/
 	public void sendKeysToWebElement(WebElement element, String textToSend) throws Exception {
 		try {
 			this.visibilityOf(element);
 			element.clear();
 			element.sendKeys(textToSend);
-			System.out.println("Successfully Sent the following keys: '" + textToSend + "' to element: " + "<"+ element.toString() + ">");
+			System.out.println("Successfully Sent the following keys: '" + textToSend + "' to element: " + "<"
+					+ element.toString() + ">");
 		} catch (Exception e) {
-			System.out.println("Unable to locate WebElement: " + "<" + element.toString() + "> and send the following keys: " + textToSend);
+			System.out.println("Unable to locate WebElement: " + "<" + element.toString()
+					+ "> and send the following keys: " + textToSend);
+			Assert.fail("Unable to send keys to WebElement, Exception: " + e.getMessage());
+		}
+	}
+	
+	public void actionSendKeys(WebElement element, String textToSend) {
+		try {
+			Actions a = new Actions(driver);
+			a.moveToElement(element).click();
+			a.sendKeys(textToSend);
+			a.build().perform();
+		} catch (Exception e) {
+			System.out.println("Unable to locate WebElement: " + "<" + element.toString()
+			+ "> and send the following keys: " + textToSend);
 			Assert.fail("Unable to send keys to WebElement, Exception: " + e.getMessage());
 		}
 	}
@@ -184,16 +212,16 @@ public class BasePage extends DriverFactory {
 	/**********************************************************************************/
 	/**********************************************************************************/
 
-	
 	/**********************************************************************************
-	 **JS METHODS & JS SCROLL
+	 ** JS METHODS & JS SCROLL
 	 **********************************************************************************/
 	public void scrollToElementByWebElementLocator(WebElement element) {
 		try {
 			this.wait.until(ExpectedConditions.visibilityOf(element)).isEnabled();
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 			((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -400)");
-			System.out.println("Succesfully scrolled to the WebElement, using locator: " + "<" + element.toString() + ">");
+			System.out.println(
+					"Succesfully scrolled to the WebElement, using locator: " + "<" + element.toString() + ">");
 		} catch (Exception e) {
 			System.out.println("Unable to scroll to the WebElement, using locator: " + "<" + element.toString() + ">");
 			Assert.fail("Unable to scroll to the WebElement, Exception: " + e.getMessage());
@@ -203,10 +231,23 @@ public class BasePage extends DriverFactory {
 	public void jsPageScroll(int numb1, int numb2) {
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("scroll(" + numb1 + "," + numb2 + ")");
+			js.executeScript("window.scrollTo(0,document.body.scrollHeight);");
 			System.out.println("Succesfully scrolled to the correct position! using locators: " + numb1 + ", " + numb2);
 		} catch (Exception e) {
-			System.out.println("Unable to scroll to element using locators: " + "<" + numb1 + "> " + " <" + numb2 + ">");
+			System.out
+					.println("Unable to scroll to element using locators: " + "<" + numb1 + "> " + " <" + numb2 + ">");
+			Assert.fail("Unable to manually scroll to WebElement, Exception: " + e.getMessage());
+		}
+	}
+	
+	public void jsPageScrollIntoView(WebElement element) {
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+			System.out.println("Succesfully scrolled to the element");
+		} catch (Exception e) {
+			System.out
+					.println("Unable to scroll to element");
 			Assert.fail("Unable to manually scroll to WebElement, Exception: " + e.getMessage());
 		}
 	}
@@ -216,13 +257,15 @@ public class BasePage extends DriverFactory {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			js.executeScript("arguments[0].click();", element);
-			System.out.println("Successfully JS clicked on the following WebElement: " + "<" + element.toString() + ">");
+			System.out
+					.println("Successfully JS clicked on the following WebElement: " + "<" + element.toString() + ">");
 		} catch (StaleElementReferenceException elementUpdated) {
 			WebElement staleElement = element;
 			Boolean elementPresent = wait.until(ExpectedConditions.elementToBeClickable(staleElement)).isEnabled();
 			if (elementPresent == true) {
 				js.executeScript("arguments[0].click();", elementPresent);
-				System.out.println("(Stale Exception) Successfully JS clicked on the following WebElement: " + "<" + element.toString() + ">");
+				System.out.println("(Stale Exception) Successfully JS clicked on the following WebElement: " + "<"
+						+ element.toString() + ">");
 			}
 		} catch (NoSuchElementException e) {
 			System.out.println("Unable to JS click on the following WebElement: " + "<" + element.toString() + ">");
@@ -238,28 +281,38 @@ public class BasePage extends DriverFactory {
 	/**********************************************************************************/
 	/**********************************************************************************/
 
-	
 	/**********************************************************************************
-	 **WAIT METHODS
+	 ** WAIT METHODS
 	 **********************************************************************************/
 	public WebElement visibilityOf(WebElement element) {
+		int count = 0;
 		try {
 			this.wait.until(ExpectedConditions.visibilityOf(element));
 			System.out.println("WebElement is visible using locator: " + "<" + element.toString() + ">");
 		} catch (Exception e) {
+			visibilityOf(element);
+			count++;
+			if (count == 50) {
 			System.out.println("WebElement is NOT visible, using locator: " + "<" + element.toString() + ">");
 			Assert.fail("WebElement is NOT visible, Exception: " + e.getMessage());
+			}
 		}
 		return element;
 	}
-	
-	public List<WebElement> visibilityOf(List<WebElement> element) {
+
+	public List<WebElement> visibilityOf(List<WebElement> element){
+//		Thread.sleep(1000);
+		int count = 0;
 		try {
 			this.wait.until(ExpectedConditions.visibilityOfAllElements(element));
 			System.out.println("WebElement is visible using locator: " + "<" + element.toString() + ">");
 		} catch (Exception e) {
-			System.out.println("WebElement is NOT visible, using locator: " + "<" + element.toString() + ">");
-			Assert.fail("WebElement is NOT visible, Exception: " + e.getMessage());
+			visibilityOf(element);
+			count++;
+			if (count == 50) {
+				System.out.println("WebElement is NOT visible, using locator: " + "<" + element.toString() + ">");
+				Assert.fail("WebElement is NOT visible, Exception: " + e.getMessage());
+			}
 		}
 		return element;
 	}
@@ -275,17 +328,15 @@ public class BasePage extends DriverFactory {
 		}
 	}
 
-	public boolean isElementClickable(WebElement element) {
+	public WebElement clickabilityOf(WebElement element) {
 		try {
 			this.wait.until(ExpectedConditions.elementToBeClickable(element));
 			System.out.println("WebElement is clickable using locator: " + "<" + element.toString() + ">");
-			return true;
 		} catch (Exception e) {
 			System.out.println("WebElement is NOT clickable using locator: " + "<" + element.toString() + ">");
-			return false;
 		}
+		return element;
 	}
-
 
 	public boolean waitUntilPreLoadElementDissapears(By element) {
 		return this.wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
@@ -294,15 +345,13 @@ public class BasePage extends DriverFactory {
 	/**********************************************************************************/
 	/**********************************************************************************/
 
-	
 	/**********************************************************************************
-	 **PAGE METHODS
+	 ** PAGE METHODS & ASSERT
 	 **********************************************************************************/
 	public BasePage loadUrl(String url) throws Exception {
 		driver.get(url);
 		return new BasePage();
 	}
-
 
 	public String getCurrentURL() {
 		try {
@@ -319,7 +368,8 @@ public class BasePage extends DriverFactory {
 		try {
 			String url = driver.getCurrentUrl();
 			this.wait.until(ExpectedConditions.urlMatches(urlToWaitFor));
-			System.out.println("The current URL was: " + url + ", " + "navigated and waited for the following URL: "+ urlToWaitFor);
+			System.out.println("The current URL was: " + url + ", " + "navigated and waited for the following URL: "
+					+ urlToWaitFor);
 			return urlToWaitFor;
 		} catch (Exception e) {
 			System.out.println("Exception! waiting for the URL: " + urlToWaitFor + ",  Exception: " + e.getMessage());
@@ -327,20 +377,36 @@ public class BasePage extends DriverFactory {
 		}
 	}
 	
-	public void checkDropDown(List<WebElement> element, Object... values) {
-		int size = element.size();
-		for(int i=0; i<size; i++) {
-			softAssert.assertEquals(element.get(i).getText(), values[i], values[i] + " verbiage is wrong.");
+	public void assertString(WebElement element, String prop) {
+		try {
+			softAssert.assertEquals(element.getText(), prop, "Actual verbiage mis-matches with expected: " + prop);
+		} finally {
 			softAssert.assertAll();
 		}
 	}
-	
+
 	/**********************************************************************************/
 	/**********************************************************************************/
 
-	
 	/**********************************************************************************
-	 **ALERT & POPUPS METHODS
+	 ** DROPDOWN & LIST METHODS
+	 **********************************************************************************/
+	public void checkDropDown(List<WebElement> element, Object... values) {
+		int size = element.size();
+		try {
+			for (int i = 0; i < size; i++) {
+				softAssert.assertEquals(element.get(i).getText(), values[i], values[i] + " verbiage is wrong.");
+			} 
+		} finally {
+			softAssert.assertAll();
+		}
+	}
+
+	/**********************************************************************************/
+	/**********************************************************************************/
+
+	/**********************************************************************************
+	 ** ALERT & POPUPS METHODS
 	 **********************************************************************************/
 	public void closePopups(By locator) throws InterruptedException {
 		try {
@@ -391,52 +457,56 @@ public class BasePage extends DriverFactory {
 			Assert.fail("Unable to close the popup, Exception: " + e.getMessage());
 		}
 	}
+
 	/**********************************************************************************/
 	/**********************************************************************************/
-	
-	/***EXTENT REPORT****************************************************************/
+
+	/***
+	 * EXTENT REPORT
+	 ****************************************************************/
 	public static String returnDateStamp(String fileExtension) {
 		Date d = new Date();
 		String date = d.toString().replace(":", "_").replace(" ", "_") + fileExtension;
 		return date;
 	}
-	
-	public static void captureScreenshot() throws IOException, InterruptedException {
-		File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		
-		screenshotName = returnDateStamp(".jpg");
-	
-		FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\output\\imgs\\" + screenshotName));
-		
-		Reporter.addStepLog("Taking a screenshot!");
-		Reporter.addStepLog("<br>");
-		Reporter.addStepLog("<a target=\"_blank\", href="+ returnScreenshotName() + "><img src="+ returnScreenshotName()+ " height=200 width=300></img></a>");
-	}
-	
+
+//	public static void captureScreenshot() throws IOException, InterruptedException {
+//		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//
+//		screenshotName = returnDateStamp(".jpg");
+//
+//		FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\output\\imgs\\" + screenshotName));
+//
+//		Reporter.addStepLog("Taking a screenshot!");
+//		Reporter.addStepLog("<br>");
+//		Reporter.addStepLog("<a target=\"_blank\", href=" + returnScreenshotName() + "><img src="
+//				+ returnScreenshotName() + " height=200 width=300></img></a>");
+//	}
+
 	public static String returnScreenshotName() {
 		return (System.getProperty("user.dir") + "\\output\\imgs\\" + screenshotName).toString();
 	}
-	
+
 	private static void copyFileUsingStream(File source, File dest) throws IOException {
 		InputStream is = null;
 		OutputStream os = null;
-		
+
 		try {
 			is = new FileInputStream(source);
 			os = new FileOutputStream(dest);
 			byte[] buffer = new byte[1024];
 			int length;
-			
-			while((length = is.read(buffer)) > 0) {
+
+			while ((length = is.read(buffer)) > 0) {
 				os.write(buffer, 0, length);
 			}
-			
+
 		} finally {
 			is.close();
 			os.close();
 		}
 	}
-	
+
 	public static void copyLatestExtentReport() throws IOException {
 		Date d = new Date();
 		String date = d.toString().replace(":", "_").replace(" ", "_");

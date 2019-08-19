@@ -51,7 +51,7 @@ public class RepaymentPage extends pageObjects.pageObject.RepaymentPage {
 		softAssert.assertAll();
 	}
 	
-	public void checkCommonFields_group2() {
+	public void checkCommonFields_group2() throws InterruptedException {
 		softAssert.assertEquals(getDateLabel().getText(), prop.getProperty("date_label"), 
 				"Date label verbiage is not correct.");
 		
@@ -87,12 +87,12 @@ public class RepaymentPage extends pageObjects.pageObject.RepaymentPage {
 		softAssert.assertAll();
 	}
 	
-	public void checkAdvancedRepaymentDropDown() {
+	public void checkAdvancedRepaymentDropDown() throws InterruptedException {
 		System.out.println(prop.getProperty("advance_repayment_method_option1"));
 		checkDropDown(getRepaymentmethoddropdown(), prop.getProperty("advance_repayment_method_option1"), prop.getProperty("advance_repayment_method_option2"), prop.getProperty("advance_repayment_method_option3"), prop.getProperty("advance_repayment_method_option4"), prop.getProperty("advance_repayment_method_option5"));
 	}
 	
-	public void clickAdvancedRepaymentDropDown(String repayment_method) {
+	public void clickAdvancedRepaymentDropDown(String repayment_method) throws InterruptedException {
 		int size = getRepaymentmethoddropdown().size();
 		scriptClick(getRepaymentmethoddropdown().get(0));
 //		for(int i=0; i<size; i++) {

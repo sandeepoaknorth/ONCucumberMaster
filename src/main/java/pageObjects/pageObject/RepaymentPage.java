@@ -376,7 +376,7 @@ public class RepaymentPage extends BasePage {
 
 	public void setRepaymentmethod(String input) throws InterruptedException {
 		click(repaymentmethodarrow);
-		getGenericdroplist(repaymentmethoddropdown, input);
+		checkDropDown(repaymentmethoddropdown, input);
 	}
 
 	public void scrollup(WebDriver driver) {
@@ -459,27 +459,27 @@ public class RepaymentPage extends BasePage {
 		return visibilityOf(apportioningMethod);
 	}
 
-	public List<WebElement> getApportioningMethodDropDownValues() {
+	public List<WebElement> getApportioningMethodDropDownValues() throws InterruptedException {
 		return visibilityOf(apportioningMethodDropDownValues);
 	}
 
-	public List<WebElement> getRepaymentmethoddropdown() {
+	public List<WebElement> getRepaymentmethoddropdown() throws InterruptedException {
 		return visibilityOf(repaymentmethoddropdown);
 	}
 
 	public void setRepaymentMethod(String input) throws InterruptedException {
 		click(repaymentMethod);
-		getGenericdroplist(repaymentmethoddropdown, input);
+		checkDropDown(repaymentmethoddropdown, input);
 	}
 
 	public void setAdvanceRepaymentMethod(String input) throws InterruptedException {
 		click(advanceRepaymentMethod);
-		getGenericdroplist(repaymentmethoddropdown, input);
+		checkDropDown(repaymentmethoddropdown, input);
 	}
 
 	public void setApportioningMethod(String input) throws InterruptedException {
 		click(apportioningMethod);
-		getGenericdroplist(repaymentmethoddropdown, input);
+		checkDropDown(repaymentmethoddropdown, input);
 	}
 
 	public WebElement getApplyExcessOrShortFallDrop() {

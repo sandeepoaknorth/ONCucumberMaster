@@ -22,6 +22,9 @@ public class Quickaccesspage extends BasePage{
 
 	@FindBy(xpath="//h3[text()='Interest Rate Maintenance']/..")
 	private WebElement intrstratemaintenance;
+	
+	@FindBy(xpath="//h3[text()='Index Setup']/..")
+	private WebElement indexRate;
 
 	@FindBy(xpath="//h3[text()='Customer']/..")
 	private WebElement customer;
@@ -85,6 +88,10 @@ public class Quickaccesspage extends BasePage{
 
 	public WebElement getIntrstratemaintenance() {
 		return intrstratemaintenance;
+	}
+	
+	public WebElement getIndexRate() {
+		return indexRate;
 	}
 
 	public WebElement getCustomer() {

@@ -3,7 +3,7 @@
 <suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]" junit="true">
   <test name="Surefire test">
     <classes>
-      <class name="ComplexRepayment_scenario004_run001_IT"/>
+      <class name="InterestRateMaintenance_Dynamic_scenario001_run001_IT"/>
     </classes>
   </test> <!-- Surefire test -->
 </suite> <!-- Failed suite [Surefire suite] -->

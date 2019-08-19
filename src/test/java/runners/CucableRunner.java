@@ -2,16 +2,7 @@ package runners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
-import pageObjects.BasePage;
-
-import java.io.File;
-import java.io.IOException;
-
 import org.junit.runner.RunWith;
-import org.testng.annotations.AfterClass;
-
-import com.cucumber.listener.Reporter;
 
 @RunWith(Cucumber.class)
 
@@ -19,7 +10,7 @@ import com.cucumber.listener.Reporter;
         glue = "stepDefinitions",
         features = {"target/parallel/features/[CUCABLE:FEATURE].feature"},
 		monochrome = true,
-		tags = {"@Sanity, @Regression, @Smoke"}, 
+		tags = {"~@ignore"}, 
 		plugin = { "pretty", "html:target/cucumber", "json:target/cucumber-report/[CUCABLE:RUNNER].json",
         				"com.cucumber.listener.ExtentCucumberFormatter:output/report.html" }
         )

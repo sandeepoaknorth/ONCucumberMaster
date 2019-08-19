@@ -36,11 +36,11 @@ public class Customermainpage extends BasePage {
 		return webtablehead;
 	}
 
-	public List<WebElement> getAccountStatus() {
+	public List<WebElement> getAccountStatus() throws InterruptedException {
 		return visibilityOf(accountStatus);
 	}
 	
-	public WebElement getAccountView(String accountStatus){
+	public WebElement getAccountView(String accountStatus) throws InterruptedException{
 		int accountStatusSize = getAccountStatus().size();
 		WebElement getAccountActionView = null;
 		for(int i=0; i<=accountStatusSize; i++) {

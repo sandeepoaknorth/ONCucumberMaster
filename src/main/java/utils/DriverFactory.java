@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -15,23 +16,30 @@ import org.testng.asserts.SoftAssert;
 
 public class DriverFactory {
 	public static WebDriver driver;
-	public static pageObjects.pageActions.ContactUs_Page contactUsPage;
-	public static pageObjects.pageActions.Products_Page productsPage;
 	public static pageObjects.pageActions.Customermainpage customerMainPage;
 	public static pageObjects.pageActions.Loginpage loginPage;
 	public static pageObjects.pageActions.ManageLoanpage manageLoanPage;
 	public static pageObjects.pageActions.Quickaccesspage quickAccessPage;
 	public static pageObjects.pageActions.RepaymentPage repaymentPage;
+	public static pageObjects.pageActions.InterestRateMaintenancePage interestRateMaintenancePage;
+	public static pageObjects.pageActions.IndexRatePage indexRatePage;
+	public static pageObjects.pageActions.CommonComponents commonComponentsPage;
 	protected Properties prop = new Properties();
 	protected SoftAssert softAssert = new SoftAssert();
 	String browserName;
 	protected DriverFactory() {
 		try {
-			FileInputStream fi = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\config.properties");
+			FileInputStream fi = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\Config.properties");
 			FileInputStream loan = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\LoanAccountRepayment.properties");
+			FileInputStream commonComponents = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\CommonComponents.properties");
+			FileInputStream indexRate = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\IndexRate.properties");
+			FileInputStream interestRateMaintenance = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\InterestRateMaintenance.properties");
 			try {
 				prop.load(fi);
 				prop.load(loan);
+				prop.load(commonComponents);
+				prop.load(indexRate);
+				prop.load(interestRateMaintenance);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -80,13 +88,14 @@ public class DriverFactory {
 			System.out.println("Unable to load browser: " + e.getMessage());
 		} finally {
 			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-			contactUsPage = PageFactory.initElements(driver, pageObjects.pageActions.ContactUs_Page.class);
-			productsPage = PageFactory.initElements(driver, pageObjects.pageActions.Products_Page.class);
 			customerMainPage = PageFactory.initElements(driver, pageObjects.pageActions.Customermainpage.class);
 			manageLoanPage = PageFactory.initElements(driver, pageObjects.pageActions.ManageLoanpage.class);
 			repaymentPage = PageFactory.initElements(driver, pageObjects.pageActions.RepaymentPage.class);
 			loginPage = PageFactory.initElements(driver, pageObjects.pageActions.Loginpage.class);
 			quickAccessPage = PageFactory.initElements(driver, pageObjects.pageActions.Quickaccesspage.class);
+			interestRateMaintenancePage = PageFactory.initElements(driver, pageObjects.pageActions.InterestRateMaintenancePage.class);
+			indexRatePage = PageFactory.initElements(driver, pageObjects.pageActions.IndexRatePage.class);
+			commonComponentsPage = PageFactory.initElements(driver, pageObjects.pageActions.CommonComponents.class);
 		}
 		return driver;
 	}

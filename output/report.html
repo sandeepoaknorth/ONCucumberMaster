@@ -33,8 +33,7 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
-			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
@@ -48,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Jul 17, 2019 11:57:02 AM</span>
+                    <span class='label suite-start-time blue darken-3'>Aug 19, 2019 01:42:06 PM</span>
 				</a>
 			</li>
 			<li>
@@ -75,6 +74,7 @@
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
 						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -82,18 +82,6 @@
 			<!-- test toggle -->
 
 			<!-- category toggle -->
-			<div class='chip transparent'>
-				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
-					<i class='material-icons'>local_offer</i> Category
-				</a>
-				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@Sanity</a></li>
-					<li><a href='#'>@Regression</a></li>
-					<li><a href='#'>@Smoke</a></li>
-					<li class='divider'></li>
-					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
-				</ul>
-			</div>
 			<!-- category toggle -->
 
 			<!-- clear filters -->
@@ -137,10 +125,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='75%'><span class='strong'>3</span> feature(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> feature(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> feature(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -152,10 +140,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='75%'><span class='strong'>3</span> scenario(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> scenario(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> scenario(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -167,10 +155,10 @@
 					<canvas id='grandchild-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='95.238%'><span class='strong'>20</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='25%'><span class='strong'>1</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='4.762%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='25%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='50%'>2</span> others
 				</div>
 			</div>
 		</div>
@@ -184,271 +172,81 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Static testing for Advanced Repayment Page2</span>
-						<span class='test-time'>Jul 17, 2019 11:57:02 AM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-name'>Static testing for Interest Rate Maintenance page</span>
+						<span class='test-time'>Aug 19, 2019 01:42:06 PM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
-<div class='scenario node' test-id='2' status='pass'>
-	<div class='category-list'>
-		<span class='category label white-text'>@Sanity</span>
-	</div>
-	<span class='duration right label'>0h 0m 25s+795ms</span>
+<div class='scenario node' test-id='2' status='fail'>
+	<span class='duration right label'>0h 0m 24s+559ms</span>
 	<div class='desc'>
 		<b>Scenario</b>
-		<span class="desc-text">Validate Advance Repayment Page objects post selecting Repayment method</span>
+		<span class="desc-text">Add interest rate</span>
 	</div>
 	<ul class='steps'>
 		<li test-id='3' class='node given pass' status='pass'>
 			
 			<b>Given</b>
 			
-			<span class="bdd-step-name">Given The user is on Repayment Page</span>
-				<div class='pre'>Accessing Loan Section.</div>
-				<div class='pre'>Clicking on Repayment Button.</div>
+			<span class="bdd-step-name">Given User is in Interest Rate Maintenance screen</span>
 				<div class='pre'>passed</div>
 			
 		</li>
-		<li test-id='4' class='node when pass' status='pass'>
+		<li test-id='4' class='node when fail' status='fail'>
 			
 			<b>When</b>
 			
-			<span class="bdd-step-name">When He clicks on Advance Payment button</span>
-				<div class='pre'>passed</div>
+			<span class="bdd-step-name">When User provides all mandatory details like Past, GBP - Great British Pound, LIBOR1 12 MONTHS, 4.1, Past dated Rate addition</span>
+				<div class='pre'><textarea>org.openqa.selenium.WebDriverException: unknown error: Element <div class="mat-input-infix mat-form-field-infix">...</div> is not clickable at point (1097, 191). Other element would receive the click: <div class="cdk-overlay-backdrop cdk-overlay-transparent-backdrop cdk-overlay-backdrop-showing"></div>
+  (Session info: chrome=75.0.3770.142)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ONAI-BLRLTP078', ip: '10.70.10.70', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_211'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\SANDEE~1.HEG\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 75.0.3770.142, webStorageEnabled: true}
+Session ID: d22e1932b9ea63ccc9d21048f474e837
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy18.click(Unknown Source)
+	at stepDefinitions.InterestRateMaintenance.user_provides_all_mandatory_details_like_(InterestRateMaintenance.java:72)
+	at ?.When User provides all mandatory details like Past, GBP - Great British Pound, LIBOR1 12 MONTHS, 4.1, Past dated Rate addition(target/parallel/features/InterestRateMaintenance_Dynamic_scenario001_run001_IT.feature:8)
+</textarea></div>
 			
 		</li>
-		<li test-id='5' class='node and pass' status='pass'>
+		<li test-id='5' class='node and skip' status='skip'>
 			
 			<b>And</b>
 			
-			<span class="bdd-step-name">And Clicks on Repayment Dropdown</span>
-				<div class='pre'>passed</div>
+			<span class="bdd-step-name">And Clicks on Update</span>
+				<div class='pre'>skipped</div>
 			
 		</li>
-		<li test-id='6' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And Selects any Repayment Method</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='7' class='node then pass' status='pass'>
+		<li test-id='6' class='node then skip' status='skip'>
 			
 			<b>Then</b>
 			
-			<span class="bdd-step-name">Then Check for all common fields</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-	</ul>
-</div>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='8'>
-					<div class='test-heading'>
-						<span class='test-name'>Static testing for Advanced Repayment Page3</span>
-						<span class='test-time'>Jul 17, 2019 11:57:29 AM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='scenario node' test-id='9' status='pass'>
-	<div class='category-list'>
-		<span class='category label white-text'>@Regression</span>
-	</div>
-	<span class='duration right label'>0h 0m 23s+23ms</span>
-	<div class='desc'>
-		<b>Scenario</b>
-		<span class="desc-text">Validate Advance Repayment Page objects post selecting Date</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='10' class='node given pass' status='pass'>
-			
-			<b>Given</b>
-			
-			<span class="bdd-step-name">Given The user is on Repayment Page</span>
-				<div class='pre'>Accessing Loan Section.</div>
-				<div class='pre'>Clicking on Repayment Button.</div>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='11' class='node when pass' status='pass'>
-			
-			<b>When</b>
-			
-			<span class="bdd-step-name">When He clicks on Advance Payment button</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='12' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And Clicks on Repayment Dropdown</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='13' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And Selects any Repayment Method</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='14' class='node then pass' status='pass'>
-			
-			<b>Then</b>
-			
-			<span class="bdd-step-name">Then Selects any date</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='15' class='node then pass' status='pass'>
-			
-			<b>Then</b>
-			
-			<span class="bdd-step-name">Then Check for Show Dues and Submit button</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-	</ul>
-</div>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='16'>
-					<div class='test-heading'>
-						<span class='test-name'>Static testing for Advanced Repayment Page</span>
-						<span class='test-time'>Jul 17, 2019 11:57:53 AM</span>
-						<span class='test-status right fail'>fail</span>
-					</div>
-					<div class='test-content hide'>
-<div class='scenario node' test-id='17' status='fail'>
-	<div class='category-list'>
-		<span class='category label white-text'>@Smoke</span>
-	</div>
-	<span class='duration right label'>0h 0m 22s+525ms</span>
-	<div class='desc'>
-		<b>Scenario</b>
-		<span class="desc-text">Validate Advance Repayment DropDown values</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='18' class='node given pass' status='pass'>
-			
-			<b>Given</b>
-			
-			<span class="bdd-step-name">Given The user is on Repayment Page</span>
-				<div class='pre'>Accessing Loan Section.</div>
-				<div class='pre'>Clicking on Repayment Button.</div>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='19' class='node when pass' status='pass'>
-			
-			<b>When</b>
-			
-			<span class="bdd-step-name">When He clicks on Advance Payment button</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='20' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And Clicks on Repayment Dropdown</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='21' class='node then fail' status='fail'>
-			
-			<b>Then</b>
-			
-			<span class="bdd-step-name">Then Check for Advance Repayment DropDown values</span>
-				<div class='pre'><pre>junit.framework.AssertionFailedError
-	at junit.framework.Assert.fail(Assert.java:55)
-	at junit.framework.Assert.fail(Assert.java:64)
-	at stepDefinitions.ContactUsSteps.check_for_Advance_Repayment_DropDown_values(ContactUsSteps.java:42)
-	at ?.Then Check for Advance Repayment DropDown values(target/parallel/features/ComplexRepayment_scenario002_run001_IT.feature:10)
-</pre></div>
-			
-		</li>
-	</ul>
-</div>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='22'>
-					<div class='test-heading'>
-						<span class='test-name'>Static testing for Advanced Repayment Page</span>
-						<span class='test-time'>Jul 17, 2019 11:58:17 AM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='scenario node' test-id='23' status='pass'>
-	<div class='category-list'>
-		<span class='category label white-text'>@Regression</span>
-	</div>
-	<span class='duration right label'>0h 0m 21s+155ms</span>
-	<div class='desc'>
-		<b>Scenario</b>
-		<span class="desc-text">Validate Advance Repayment Page objects post selecting Date</span>
-	</div>
-	<ul class='steps'>
-		<li test-id='24' class='node given pass' status='pass'>
-			
-			<b>Given</b>
-			
-			<span class="bdd-step-name">Given The user is on Repayment Page</span>
-				<div class='pre'>Accessing Loan Section.</div>
-				<div class='pre'>Clicking on Repayment Button.</div>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='25' class='node when pass' status='pass'>
-			
-			<b>When</b>
-			
-			<span class="bdd-step-name">When He clicks on Advance Payment button</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='26' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And Clicks on Repayment Dropdown</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='27' class='node and pass' status='pass'>
-			
-			<b>And</b>
-			
-			<span class="bdd-step-name">And Selects any Repayment Method</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='28' class='node then pass' status='pass'>
-			
-			<b>Then</b>
-			
-			<span class="bdd-step-name">Then Selects any date</span>
-				<div class='pre'>passed</div>
-			
-		</li>
-		<li test-id='29' class='node then pass' status='pass'>
-			
-			<b>Then</b>
-			
-			<span class="bdd-step-name">Then Check for Show Dues and Submit button</span>
-				<div class='pre'>passed</div>
+			<span class="bdd-step-name">Then Provided interest details Past, LIBOR1 12 MONTHS, 4.1 should be added and visible under Historic Dates table</span>
+				<div class='pre'>skipped</div>
 			
 		</li>
 	</ul>
@@ -480,149 +278,6 @@
 
 </div>
 <!-- test view -->
-<div id='category-view' class='view hide'>
-
-	<section id='controls'>
-		<div class='controls grey lighten-4'>
-			<!-- search -->
-			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
-				<a href="#" class='search-div'>
-					<i class='material-icons'>search</i> Search
-				</a>
-				
-				<div class='input-field left hide'>
-					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
-				</div>
-				
-			</div>
-			<!-- search -->
-		</div>
-	</section>
-
-	<div class='subview-left left'>
-		
-		<div class='view-summary'>
-			<h5>Categories</h3>
-			<ul id='category-collection' class='category-collection'>
-				
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@Sanity</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 17, 2019 11:57:02 AM</td>
-										<td class='linked' test-id='2'>Static testing for Advanced Repayment Page2.Validate Advance Repayment Page objects post selecting Repayment method</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@Regression</span>
-						<span class='category-status right'>
-							<span class='label pass'>2</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 2</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 17, 2019 11:57:29 AM</td>
-										<td class='linked' test-id='9'>Static testing for Advanced Repayment Page3.Validate Advance Repayment Page objects post selecting Date</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-									<tr>
-										<td>Jul 17, 2019 11:58:17 AM</td>
-										<td class='linked' test-id='23'>Static testing for Advanced Repayment Page.Validate Advance Repayment Page objects post selecting Date</td>
-										<td><span class='test-status pass'>pass</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@Smoke</span>
-						<span class='category-status right'>
-							<span class='label fail'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							
-							<span class='label red lighten-1 white-text'>Failed: 1</span>
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
-									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Jul 17, 2019 11:57:53 AM</td>
-										<td class='linked' test-id='17'>Static testing for Advanced Repayment Page.Validate Advance Repayment DropDown values</td>
-										<td><span class='test-status fail'>fail</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-
-			</ul>
-		</div>
-	</div>
-
-	<div class='subview-right left'>
-		<div class='view-summary'>
-			<h5 class='category-name'></h5>
-		</div>
-	</div>
-</div>
 <!-- category view -->
 <div id='exception-view' class='view hide'>
 
@@ -651,7 +306,7 @@
 
                         <li class='exception displayed active'>
                             <div class='exception-heading'>
-                                <span class='exception-name'>junit.framework.AssertionFailedError</span>
+                                <span class='exception-name'>org.openqa.selenium.WebDriverException</span>
                                 <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
                             </div>
                             <div class='exception-content hide'>
@@ -666,14 +321,40 @@
                                         </thead>
                                         <tbody>
                                                     <tr>
-                                                        <td>Jul 17, 2019 11:58:15 AM</td>
-                                                        <td class='linked' test-id='21'>Static testing for Advanced Repayment Page.Validate Advance Repayment DropDown values.Then Check for Advance Repayment DropDown values</td>
-                                                        <td><pre><pre>junit.framework.AssertionFailedError
-	at junit.framework.Assert.fail(Assert.java:55)
-	at junit.framework.Assert.fail(Assert.java:64)
-	at stepDefinitions.ContactUsSteps.check_for_Advance_Repayment_DropDown_values(ContactUsSteps.java:42)
-	at ?.Then Check for Advance Repayment DropDown values(target/parallel/features/ComplexRepayment_scenario002_run001_IT.feature:10)
-</pre></pre></td>
+                                                        <td>Aug 19, 2019 01:42:22 PM</td>
+                                                        <td class='linked' test-id='4'>Static testing for Interest Rate Maintenance page.Add interest rate.When User provides all mandatory details like Past, GBP - Great British Pound, LIBOR1 12 MONTHS, 4.1, Past dated Rate addition</td>
+                                                        <td><pre><textarea>org.openqa.selenium.WebDriverException: unknown error: Element <div class="mat-input-infix mat-form-field-infix">...</div> is not clickable at point (1097, 191). Other element would receive the click: <div class="cdk-overlay-backdrop cdk-overlay-transparent-backdrop cdk-overlay-backdrop-showing"></div>
+  (Session info: chrome=75.0.3770.142)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ONAI-BLRLTP078', ip: '10.70.10.70', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_211'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\SANDEE~1.HEG\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 75.0.3770.142, webStorageEnabled: true}
+Session ID: d22e1932b9ea63ccc9d21048f474e837
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:279)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy18.click(Unknown Source)
+	at stepDefinitions.InterestRateMaintenance.user_provides_all_mandatory_details_like_(InterestRateMaintenance.java:72)
+	at ?.When User provides all mandatory details like Past, GBP - Great British Pound, LIBOR1 12 MONTHS, 4.1, Past dated Rate addition(target/parallel/features/InterestRateMaintenance_Dynamic_scenario001_run001_IT.feature:8)
+</textarea></pre></td>
                                                     </tr>
                                         </tbody>
                                     </table>
@@ -699,79 +380,37 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Features
-					<div class='panel-lead'>4</div>
+					<div class='panel-lead'>1</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Scenarios
-					<div class='panel-lead'>4</div>
+					<div class='panel-lead'>1</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>21</div>
+					<div class='panel-lead'>4</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jul 17, 2019 11:57:02 AM</div>
+					<div class='panel-lead'>Aug 19, 2019 01:42:06 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jul 17, 2019 11:58:39 AM</div>
+			 		<div class='panel-lead'>Aug 19, 2019 01:42:32 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>97,127ms</div>
-				</div>
-			</div>
-			<div class='col s6'>
-				<div class='card-panel dashboard-categories'>
-					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
-					
-					<table>
-						<tr>
-							<th>Name</th>
-							<th>Passed</th>
-							<th>Failed</th>
-							<th>Others</th>
-							<th>Passed %</th>
-						</tr>
-						<tr>
-							<td>@Sanity</td>
-							<td>1</td>
-							<td>0</td>
-							<td>0</td>
-							<td>
-									100%
-							</td>
-						</tr>
-						<tr>
-							<td>@Regression</td>
-							<td>2</td>
-							<td>0</td>
-							<td>0</td>
-							<td>
-									100%
-							</td>
-						</tr>
-						<tr>
-							<td>@Smoke</td>
-							<td>0</td>
-							<td>1</td>
-							<td>0</td>
-							<td>
-									0%
-							</td>
-						</tr>
-					</table>
+					<div class='panel-lead'>26,090ms</div>
 				</div>
 			</div>
 		</div>
@@ -784,7 +423,7 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 3,
+				passParent: 0,
 				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
@@ -792,7 +431,7 @@
 				skipParent: 0,
 				exceptionsParent: 1,
 				
-				passChild: 3,
+				passChild: 0,
 				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
@@ -801,14 +440,14 @@
 				infoChild: 0,
 				exceptionsChild: 1,
 				
-				passGrandChild: 20,
+				passGrandChild: 1,
 				failGrandChild: 1,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 0,
+				skipGrandChild: 2,
 				infoGrandChild: 0,
-				exceptionsGrandChild: 1,
+				exceptionsGrandChild: 3,
 			};
 		</script>
 		

@@ -111,7 +111,7 @@
 			<artifactId>cucumber-testng</artifactId>
 			<version>1.2.5</version>
 		</dependency>
-
+		
 		<!-- Extent Reports -->
 		<dependency>
 			<groupId>com.vimalselvam</groupId>
@@ -135,6 +135,13 @@
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
 			<version>3.6.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-jvm-deps -->
@@ -173,7 +180,7 @@
                    <!--<sourceRunnerTemplateFile>src/test/resources/cucable.template</sourceRunnerTemplateFile>-->
 
                    <!-- process all features in the given directory -->
-                   <sourceFeatures>src/test/java/resources/features</sourceFeatures>
+                   <sourceFeatures>src/test/java/resources/dynamicFeatures/InterestRateMaintenance_Dynamic.feature</sourceFeatures>
 
                    <!-- process a specific feature file in the given directory -->
                    <!--<sourceFeatures>src/test/resources/features/testfeature/MyTest9.feature</sourceFeatures>-->
@@ -223,6 +230,7 @@
                    <!--<logLevel>off</logLevel>-->
                </configuration>
            </plugin>
+           
            <plugin>
                <groupId>org.codehaus.mojo</groupId>
                <artifactId>build-helper-maven-plugin</artifactId>
@@ -350,5 +358,40 @@
 				</configuration>
 			</plugin> -->
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.trivago.rta
+										</groupId>
+										<artifactId>
+											cucable-plugin
+										</artifactId>
+										<versionRange>
+											[1.5.2,)
+										</versionRange>
+										<goals>
+											<goal>parallel</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

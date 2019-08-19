@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -7,13 +8,14 @@ import org.openqa.selenium.TakesScreenshot;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import pageObjects.BasePage;
 import utils.DriverFactory;
 
 public class MasterHooks extends DriverFactory {
 	
 	@Before
-	public void setup() {
+	public void setup() throws IOException {
+//		dataprovidercheck d = new dataprovidercheck();
+//		System.out.println(d.getEntirevalue(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\intrstratemaintenance.xls","Sheet1"));
 		driver = getDriver();
 		driver.get("http://cbdoc.oaknorth.ai/");
 		driver.findElement(By.xpath("//input[@formcontrolname='tenant']")).sendKeys((prop.getProperty("tenant")));

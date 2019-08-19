@@ -1,7 +1,5 @@
 package stepDefinitions;
 
-import com.cucumber.listener.Reporter;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,11 +11,11 @@ public class ContactUsSteps extends DriverFactory {
 	
 	@Given("^The user is on Repayment Page$")
 	public void the_user_is_on_RepaymentPage() throws Exception {
-		Reporter.addStepLog("Accessing Loan Section.");
+//		Reporter.addStepLog("Accessing Loan Section.");
 		quickAccessPage.clickCustomer();
 		customerMainPage.clickaccountActionView("Active");
 		manageLoanPage.selectLoanSection();
-		Reporter.addStepLog("Clicking on Repayment Button.");
+//		Reporter.addStepLog("Clicking on Repayment Button.");
 		manageLoanPage.clickRepayment();
 	}
 

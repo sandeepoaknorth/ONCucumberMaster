@@ -10,6 +10,14 @@ public class Quickaccesspage extends pageObjects.pageObject.Quickaccesspage{
 	public void clickMenu() {
 		scriptClick(getMenu());
 	}
+	
+	public void clickInterestRateMaintenance() {
+		scriptClick(getIntrstratemaintenance());
+	}
+	
+	public void clickIndexRate() {
+		scriptClick(getIndexRate());
+	}
 
 }
 
