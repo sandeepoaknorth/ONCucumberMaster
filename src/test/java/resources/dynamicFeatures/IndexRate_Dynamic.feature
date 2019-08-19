@@ -10,10 +10,10 @@ Feature: Dynamic testing for Index Setup
     Then Index details <Index Type>, <Name>, <Currency>, <Tenor Value>, <Tenor Frequency> appears under Interest Rate Index List table
 
     Examples: 
-      | Index Type | Name    | Currency                  | Tenor Value | Tenor Frequency | Test Scenario           |
-      | Fixed      | Test1r5 | Great British Pound - GBP |          12 | Months          | Fixed Index Addition    |
-      | Variable   | Test6r1 | Great British Pound - GBP |          12 | Days            | Variable Index Addition |
-      | Fixed      | Test1   | GBP - Great British Pound |          12 | Months          | Fixed Index Addition    |
+      | Index Type | Name  | Currency                  | Tenor Value | Tenor Frequency | Test Scenario           |
+      | Fixed      | Ts1r7 | Great British Pound - GBP |          12 | Months          | Fixed Index Addition    |
+      | Variable   | Ts6r1 | Great British Pound - GBP |          12 | Days            | Variable Index Addition |
+      | Fixed      | Ts1   | Great British Pound - GBP |          12 | Months          | Fixed Index Addition    |
 
   Scenario Outline: Searching an existing index
     When User provides <Currency> or <Name>

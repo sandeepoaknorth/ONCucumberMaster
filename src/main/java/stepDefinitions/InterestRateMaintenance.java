@@ -19,7 +19,6 @@ public class InterestRateMaintenance extends DriverFactory {
 		commonComponentsPage.getCurrency().click();
 		commonComponentsPage.getDropDown().get(0).click();
 		interestRateMaintenancePage.getReferenceRate().click();
-		System.out.println(commonComponentsPage.getDropDown().size());
 		commonComponentsPage.getDropDown().get(0).click();
 		JavaOnlyMethods j = new JavaOnlyMethods();
 		interestRateMaintenancePage.getValueInput().sendKeys(""+j.getRandomNum(100)+"");
@@ -29,12 +28,10 @@ public class InterestRateMaintenance extends DriverFactory {
     public void user_provides_an_invalid_value() throws Throwable {
         interestRateMaintenancePage.getValueInput().sendKeys("10000");
         commonComponentsPage.getBody().click();
-        Thread.sleep(2000);
     }
 
     @Then("^User should see all UI elements of Interest Rate Maintenance page$")
     public void user_should_see_all_ui_elements_of_something_page() {
-    	System.out.println(prop.getProperty("rateMaintenanceHeader"));
         interestRateMaintenancePage.assertString(interestRateMaintenancePage.getRateMaintenanceHeaderVerbiage(), prop.getProperty("rateMaintenanceHeader"));
         interestRateMaintenancePage.assertString(interestRateMaintenancePage.getBusinessDateVerbiage(), prop.getProperty("businessDate"));
         interestRateMaintenancePage.assertString(interestRateMaintenancePage.getReferenceRateVerbiage(), prop.getProperty("referenceRate"));
