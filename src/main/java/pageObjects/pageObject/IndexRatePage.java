@@ -34,11 +34,11 @@ public class IndexRatePage extends BasePage {
 	@FindBy(xpath = "(//input[@placeholder='Tenor value'])/parent::div/span/label")
 	private WebElement tenorValueVerbiage;
 
-	@FindBy(xpath = "//label[@id='radio-group-label']")
-	private WebElement radioButtonVerbiage;
+	@FindBy(xpath = "//mat-slide-toggle/label/span")
+	private WebElement toggleButtonVerbiage;
 
-	@FindBy(xpath = "//mat-radio-button[contains(@id, 'mat-radio')]")
-	private List<WebElement> radioButtons;
+	@FindBy(xpath = "//mat-slide-toggle")
+	private WebElement toggleButton;
 
 	@FindBy(xpath = "//mat-card[@class='mat-card']/h2")
 	private WebElement tableHeaderVerbiage;
@@ -107,12 +107,12 @@ public class IndexRatePage extends BasePage {
 		return visibilityOf(tenorValueVerbiage);
 	}
 
-	public WebElement getRadioButtonVerbiage() {
-		return visibilityOf(radioButtonVerbiage);
+	public WebElement getToggleButtonVerbiage() {
+		return visibilityOf(toggleButtonVerbiage);
 	}
 
-	public List<WebElement> getRadioButtons() throws InterruptedException {
-		return visibilityOf(radioButtons);
+	public WebElement getToggleButton() throws InterruptedException {
+		return visibilityOf(toggleButton);
 	}
 
 	public WebElement getTableHeaderVerbiage() {

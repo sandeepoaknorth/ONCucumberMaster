@@ -15,6 +15,7 @@ https://acornlab.atlassian.net/browse/ACBPD-1836
   Scenario: Selecting Invalid value
     Given User is in Interest Rate Maintenance screen
      When User provides an invalid value
+     And User waits for 5 seconds
      Then System should throw an error "interestRate_invalidValue"
 
 

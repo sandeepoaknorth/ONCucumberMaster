@@ -514,4 +514,9 @@ public class BasePage extends DriverFactory {
 		File dest = new File(System.getProperty("user.dir") + "\\output\\" + date.toString() + ".html");
 		copyFileUsingStream(source, dest);
 	}
+	
+	 public void zoomInZoomOut(String value){
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+		 js.executeScript("document.body.style.zoom='" + value +"'");
+		 }
 }

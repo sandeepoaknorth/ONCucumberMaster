@@ -80,7 +80,7 @@ public class CommonComponents extends pageObjects.pageObject.CommonComponents {
 	 **********************************************************************************/
 	public void checkDropDown(String propertyName) {
 		for (int i = 0; i < getDropDown().size(); i++) {
-			assertString(getDropDown().get(i), prop.getProperty(propertyName + i));
+			assertString(getDropDown().get(i), prop.getProperty(propertyName + (i + 1)));
 		}
 	}
 
@@ -157,10 +157,11 @@ public class CommonComponents extends pageObjects.pageObject.CommonComponents {
 			int rows = getTableRows().size();
 			for (int i = 0; i < rows; i++) {
 				List<WebElement> rowElement = getTableRows().get(i).findElements(By.tagName("td"));
-				if (rowElement.get(1).findElement(By.tagName("div")).getText()
-								.equalsIgnoreCase(validationString1)
-						&& (rowElement.get(2).findElement(By.tagName("div")).getText().contains(validationString2))) {
-					System.out.println("Entry found in row: " + (i + 1) + " of page: " + j+1);
+				if (rowElement.get(1).findElement(By.tagName("div")).getText().toLowerCase()
+						.contains(validationString1.toLowerCase())
+						&& (rowElement.get(2).findElement(By.tagName("div")).getText().toLowerCase().toLowerCase()
+								.contains(validationString2.toLowerCase()))) {
+					System.out.println("Entry found in row: " + (i + 1) + " of page: " + j + 1);
 					flag = true;
 					break;
 				}
@@ -176,6 +177,33 @@ public class CommonComponents extends pageObjects.pageObject.CommonComponents {
 		}
 		if (flag != true) {
 			Assert.fail("Entry not available in table!");
+		}
+	}
+	
+	public void clickOnMatTableElement(String baseString, List<WebElement> key, List<WebElement> clickCell) {
+		for(int i=0; i<key.size(); i++) {
+			if(baseString.equalsIgnoreCase(key.get(i).getText())) {
+				clickCell.get(i).click();
+				break;
+			}
+		}
+	}
+	
+	public void clickOnTableElement(List<WebElement> tableData, String baseString, int nextClickCell) throws InterruptedException {
+		for(int i=0; i<tableData.size(); i++) {
+			if(tableData.get(i).getText().contains(baseString)) {
+				tableData.get(i+nextClickCell).click();
+				break;
+			}
+		}
+	}
+	
+	public void clickOnTableElement(String baseString) throws InterruptedException {
+		for(int i=0; i<getTableData().size(); i++) {
+			if(baseString.equalsIgnoreCase(getTableData().get(i).getText())) {
+				getTableData().get(i).click();
+				break;
+			}
 		}
 	}
 }

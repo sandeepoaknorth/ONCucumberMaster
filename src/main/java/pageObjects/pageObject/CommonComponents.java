@@ -117,6 +117,13 @@ public class CommonComponents extends BasePage {
 	/**********************************************************************************
 	 ** BODY
 	 **********************************************************************************/
+	@FindBy(tagName = "html")
+	private WebElement html;
+	
+	public WebElement getHtml() {
+		return html;
+	}
+	
 	@FindBy(xpath = "//body")
 	private WebElement body;
 	

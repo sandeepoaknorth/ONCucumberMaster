@@ -18,9 +18,14 @@ public class ManageLoanpage extends BasePage {
 	
 	@FindBy(xpath = "//span//strong[contains(.,'R')]")
 	private WebElement RepaymentButton;
+	
+	@FindBy(xpath = "//p[contains(text(),'Track Transaction')]/../..")
+	private WebElement transactionButton;
+	
+	
 
 	public List<WebElement> getLoanSection() {
-		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@id,'mat-tab-label')]")));
+		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@id,'mat-tab-label')]/div")));
 	}
 
 	public WebElement getAccountStatus() {
@@ -33,6 +38,10 @@ public class ManageLoanpage extends BasePage {
 
 	public WebElement getLoanMenuButton() {
 		return loanMenuButton;
+	}
+	
+	public WebElement getTransactionButton() {
+		return visibilityOf(transactionButton);
 	}
 	
 	

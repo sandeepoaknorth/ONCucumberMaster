@@ -19,17 +19,25 @@ public class IndexRatePage extends pageObjects.pageObject.IndexRatePage{
 	}
 	
 	public void fixedTenorYes() throws InterruptedException {
-		getRadioButtons().get(0).click();
-		System.out.println("Selecting Fixed Tenor.");
-		softAssert.assertEquals(getTenorValue().isEnabled(), true, "Tenor Value field is Disabled; Please check.");
-		softAssert.assertEquals(getTenorFrequency().isEnabled(), true, "Tenor Frequency field is Disabled; Please check.");
+		if(getToggleButton().getAttribute("class").contains("mat-checked")) {
+			System.out.println("Selecting Fixed Tenor.");
+			softAssert.assertEquals(getTenorValue().isEnabled(), true, "Tenor Value field is Disabled; Please check.");
+			softAssert.assertEquals(getTenorFrequency().isEnabled(), true, "Tenor Frequency field is Disabled; Please check.");
+		} else {
+			getToggleButton().click();
+			System.out.println("Selecting Fixed Tenor.");
+			softAssert.assertEquals(getTenorValue().isEnabled(), true, "Tenor Value field is Disabled; Please check.");
+			softAssert.assertEquals(getTenorFrequency().isEnabled(), true, "Tenor Frequency field is Disabled; Please check.");
+		}
 	}
 	
 	public void fixedTenorNo() throws InterruptedException {
-		getRadioButtons().get(1).click();
+		if(getToggleButton().getAttribute("class").contains("mat-checked")) {
+			getToggleButton().click();
+		}
 		System.out.println("Selecting Variable Tenor aka BoE rate.");
-		softAssert.assertEquals(getTenorValue().isEnabled(), false, "Tenor Value field is Enabled; Please check.");
-		softAssert.assertEquals(getTenorFrequency().isEnabled(), false, "Tenor Frequency field is Enabled; Please check.");
+		softAssert.assertEquals(getTenorValue().getSize(), 0, "Tenor Value field is Enabled; Please check.");
+		softAssert.assertEquals(getTenorFrequency().getSize(), 0, "Tenor Frequency field is Enabled; Please check.");
 	}
 	
 	public int searchByIndex(String indexName) throws InterruptedException {

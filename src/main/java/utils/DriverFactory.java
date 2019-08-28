@@ -24,6 +24,7 @@ public class DriverFactory {
 	public static pageObjects.pageActions.InterestRateMaintenancePage interestRateMaintenancePage;
 	public static pageObjects.pageActions.IndexRatePage indexRatePage;
 	public static pageObjects.pageActions.CommonComponents commonComponentsPage;
+	public static pageObjects.pageActions.TransactionPage transactionPage;
 	protected Properties prop = new Properties();
 	protected SoftAssert softAssert = new SoftAssert();
 	String browserName;
@@ -96,6 +97,7 @@ public class DriverFactory {
 			interestRateMaintenancePage = PageFactory.initElements(driver, pageObjects.pageActions.InterestRateMaintenancePage.class);
 			indexRatePage = PageFactory.initElements(driver, pageObjects.pageActions.IndexRatePage.class);
 			commonComponentsPage = PageFactory.initElements(driver, pageObjects.pageActions.CommonComponents.class);
+			transactionPage = PageFactory.initElements(driver, pageObjects.pageActions.TransactionPage.class);
 		}
 		return driver;
 	}

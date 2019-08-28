@@ -21,6 +21,6 @@ Feature: Dynamic testing for Index Setup
 
     Examples: 
       | Currency | Name  |
-      | USD      | null  |
+      | INR      | null  |
       | null     | T     |
-      | inr      | check |
+      | gbp      | libor |

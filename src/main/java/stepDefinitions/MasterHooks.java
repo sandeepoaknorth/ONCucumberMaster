@@ -17,11 +17,11 @@ public class MasterHooks extends DriverFactory {
 //		dataprovidercheck d = new dataprovidercheck();
 //		System.out.println(d.getEntirevalue(System.getProperty("user.dir") + "\\src\\test\\java\\resources\\intrstratemaintenance.xls","Sheet1"));
 		driver = getDriver();
-		driver.get("http://cbdoc.oaknorth.ai/");
+		driver.get(prop.getProperty("url-doc"));
 		driver.findElement(By.xpath("//input[@formcontrolname='tenant']")).sendKeys((prop.getProperty("tenant")));
 		driver.findElement(By.xpath("//input[@formcontrolname='username']")).sendKeys((prop.getProperty("usernmae")));
 		driver.findElement(By.xpath("//input[@formcontrolname='password']")).sendKeys((prop.getProperty("pwd")));
-		driver.findElement(By.xpath("//button[@class='mat-raised-button mat-primary']")).click();
+		driver.findElement(By.xpath("//span[contains(text(),'Sign In')]/..")).click();
 	}
 	
 	@After

@@ -34,6 +34,7 @@ public class IndexRate extends DriverFactory {
 
 	 @When("^User provides (.+) or (.+)$")
 	    public void user_provides_or(String str, String name) throws Throwable {
+		 indexRatePage.getToggleButton().click();
 	     String currency = str;
 	     String index = name;
 		 if(str.equalsIgnoreCase("null")) {
@@ -65,7 +66,8 @@ public class IndexRate extends DriverFactory {
 	     String index = name;
 		 if(str.equalsIgnoreCase("null")) {
 	        	currency = "";
-	        } else if(name.equalsIgnoreCase("null")) {
+	        }
+		 if(name.equalsIgnoreCase("null")) {
 	        	index = "";
 	        }
 		 Thread.sleep(1000);
@@ -78,9 +80,9 @@ public class IndexRate extends DriverFactory {
 				int rows = commonComponentsPage.getTableRows().size();
 				for (int i = 0; i < rows; i++) {
 					List<WebElement> rowElement = commonComponentsPage.getTableRows().get(i).findElements(By.tagName("td"));
-					if (rowElement.get(0).findElement(By.tagName("div")).getText().contains(index)
-							&& rowElement.get(1).findElement(By.tagName("div")).getText()
-									.contains(currency)) {
+					if (rowElement.get(0).findElement(By.tagName("div")).getText().toLowerCase().contains(index.toLowerCase())
+							&& rowElement.get(1).findElement(By.tagName("div")).getText().toLowerCase()
+									.contains(currency.toLowerCase())) {
 						System.out.println("Index: " + rowElement.get(0).findElement(By.tagName("div")).getText() + " Currency: " + rowElement.get(1).findElement(By.tagName("div")).getText());
 						count++;
 					}
@@ -128,11 +130,12 @@ public class IndexRate extends DriverFactory {
 
 	@Then("^User should see all UI elements of Index Rate Setup screen$")
 	public void user_should_see_all_ui_elements_something() throws Throwable {
+		indexRatePage.fixedTenorYes();
 		indexRatePage.assertString(indexRatePage.getIndexRateHeaderVerbiage(), prop.getProperty("indexRateHeaderVerbiage"));
 		indexRatePage.assertString(indexRatePage.getIndexNameVerbiage(), prop.getProperty("indexNameVerbiage"));
 		indexRatePage.assertString(indexRatePage.getTenorValueVerbiage(), prop.getProperty("tenorValueVerbiage"));
 		indexRatePage.assertString(indexRatePage.getTenorFrequencyVerbiage(), prop.getProperty("tenorFrequencyVerbiage"));
-		indexRatePage.assertString(indexRatePage.getRadioButtonVerbiage(), prop.getProperty("radioButtonVerbiage"));
+		indexRatePage.assertString(indexRatePage.getToggleButtonVerbiage(), prop.getProperty("toggleButtonVerbiage"));
 		indexRatePage.assertString(indexRatePage.getTableHeaderVerbiage(), prop.getProperty("tableHeaderVerbiage"));
 		indexRatePage.checkDropDown(indexRatePage.getTableColumnHeaderVerbiages(), prop.getProperty("tableColumnHeaderVerbiage1"),
 				prop.getProperty("tableColumnHeaderVerbiage2"), prop.getProperty("tableColumnHeaderVerbiage3"), prop.getProperty("tableColumnHeaderVerbiage4"));
@@ -147,12 +150,14 @@ public class IndexRate extends DriverFactory {
 
 	@And("^User should see all the supported currencies$")
 	public void user_should_see_all_the_supported_currencies() throws Throwable {
+		commonComponentsPage.getBody().click();
 		commonComponentsPage.getCurrency().click();
     	commonComponentsPage.checkDropDown("currency");
 	}
 
 	@And("^User should see all the supported frequencies$")
 	public void user_should_see_all_the_supported_frequencies() throws Throwable {
+		commonComponentsPage.getBody().click();
 		indexRatePage.clickFrequency();
 		commonComponentsPage.checkDropDown("tenorFrequency");
 	}

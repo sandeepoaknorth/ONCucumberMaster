@@ -1,4 +1,4 @@
-Feature: Static testing for Interest Rate Maintenance page
+Feature: Dynamic testing for Interest Rate Maintenance page
   https://acornlab.atlassian.net/browse/ACBPD-1836
 
   Scenario Outline: Add interest rate
