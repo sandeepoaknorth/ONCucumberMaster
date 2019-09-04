@@ -1,15 +1,12 @@
 package pageObjects.pageObject;
 
+import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
 import pageObjects.BasePage;
-
-import java.util.List;
 
 public class RepaymentPage extends BasePage {
 
@@ -28,9 +25,9 @@ public class RepaymentPage extends BasePage {
 	@FindBy(xpath = "//button[contains(.,'Show Dues')]")
 	private WebElement advanceRepaymentShowDuesButton;
 
-	@FindBy(xpath = "//i[contains(.,'clear')]") 
+	@FindBy(xpath = "//i[contains(.,'clear')]")
 	private WebElement closeModalButton;
-	
+
 	@FindBy(xpath = "//button[contains(.,'Close')]")
 	private WebElement postRepaymentCloseModalButton;
 
@@ -48,28 +45,27 @@ public class RepaymentPage extends BasePage {
 
 	@FindBy(xpath = "//button[contains(.,'Advance')]")
 	private WebElement advanceRepaymentModalButton;
-	
+
 	@FindBy(xpath = "//button[contains(.,'Normal')]")
 	private WebElement normalRepaymentModalButton;
-	
+
 	@FindBy(xpath = "//p[@class='notifier__notification-message ng-star-inserted']")
 	private WebElement notifierMessage;
-	
+
 	@FindBy(xpath = "//li//notifier-notification")
 	private WebElement notifier;
 
 	// Basic Repayment
 
-	
 	@FindBy(xpath = "//div[contains(@class,'mat-select-arrow-wrapper')]")
 	private WebElement repaymentMethodDrop;
 
 	@FindBy(xpath = "//div[contains(@class,'mat-select-value')]")
 	private WebElement repaymentMethod;
-	
+
 	@FindBy(xpath = "//label[contains(@class,'mb-5 date-picker-label')]/strong")
 	private WebElement dateLabel;
-	
+
 	@FindBy(xpath = "(//input[contains(@id,'mat-input')]/following-sibling::span/label)[1]")
 	private WebElement repaymentAmountLabel;
 
@@ -78,10 +74,10 @@ public class RepaymentPage extends BasePage {
 
 	@FindBy(xpath = "//input[@aria-label='Date input field']")
 	private WebElement repaymentDate;
-	
+
 	@FindBy(xpath = "//button[contains(@class, 'headertodaybtn')]")
 	private WebElement todayDate;
-	
+
 	@FindBy(xpath = "//span[contains(@class, 'icon-mydpcalendar')]")
 	private WebElement calanderSelector;
 
@@ -94,118 +90,109 @@ public class RepaymentPage extends BasePage {
 	@FindBy(xpath = "//input[@formcontrolname=\"finalRepayAmount\"]")
 	private WebElement advancedrepaymentAmountinput;
 
-	
 	@FindBy(xpath = "//mat-grid-list//mat-grid-tile//figure[contains(.,'Principal Due :')]")
 	private WebElement principalDue;
 
-	
 	@FindBy(xpath = "//mat-grid-list//mat-grid-tile//figure[contains(.,'Interest Due :')]")
 	private WebElement interestDue;
 
-	
 	@FindBy(xpath = "//mat-grid-list//mat-grid-tile//figure[contains(.,'Final Repayment :')]")
 	private WebElement finalRepayment;
 
-	
 	@FindBy(xpath = "//mat-grid-list//mat-grid-tile//figure[contains(.,'Total Principal Paid :')]")
 	private WebElement totalPrincipalPaid;
 
-	
 	@FindBy(xpath = "//mat-grid-list//mat-grid-tile//figure[contains(.,' Total Interest Paid :')]")
 	private WebElement totalInterestPaid;
 
 	// Advance Repayment
 	@FindBy(xpath = "//mat-select[contains(@name,'repaymentMethod')]//div[contains(@class,'mat-select-arrow-wrapper')]")
 	private WebElement advanceRepaymentMethodDrop;
-	
+
 	@FindBy(xpath = "//mat-select[contains(@name,'repaymentMethod')]//div[contains(@class,'mat-select-value')]")
 	private WebElement advanceRepaymentMethod;
-	
+
 	@FindBy(xpath = "//mat-grid-list[2]//h4[1]//span[1]")
 	private WebElement repaymentMethodFeesHeldLabel;
-	
+
 	@FindBy(xpath = "//mat-grid-list[2]//h4[1]//span[2]")
 	private WebElement repaymentMethodFeesHeldValue;
 
 	@FindBy(xpath = "//input[contains(@formcontrolname,'retainedInterestUtilizationAmount')]")
 	private WebElement retainedInterestUtilization;
-	
+
 	@FindBy(xpath = "//input[contains(@formcontrolname,'cashCollateralUtilizationAmount')]")
 	private WebElement cashCollateralUtilized;
-	
+
 	@FindBy(xpath = "//input[contains(@formcontrolname,'excessPaymentUtilizationAmount')]")
 	private WebElement advanceUtilized;
-	
+
 	@FindBy(xpath = "//mat-grid-list[1]//h4[1]//span[1]")
 	private WebElement finalRepaymentAmountLabel;
-	
+
 	@FindBy(xpath = "//mat-grid-list[1]//h4[1]//span[2]")
 	private WebElement finalRepaymentAmountValue;
-	
+
 	@FindBy(xpath = "//mat-grid-list[1]//h4[2]//span[1]")
 	private WebElement totalApportionedAmountLabel;
-	
+
 	@FindBy(xpath = "//mat-grid-list[1]//h4[2]//span[2]")
 	private WebElement totalApportionedAmountValue;
-	
+
 	@FindBy(xpath = "//mat-grid-list[1]//h4[3]//span[1]")
 	private WebElement totalDuesLabel;
-	
+
 	@FindBy(xpath = "//mat-grid-list[1]//h4[3]//span[2]")
 	private WebElement totalDuesValue;
-	
+
 	@FindBy(xpath = "//mat-select[contains(@placeholder,'Apportion')]//div[contains(@class,'mat-select-arrow-wrapper')]")
 	private WebElement apportioningMethodDrop;
-	
+
 	@FindBy(xpath = "//*[contains(@id,'cdk-overlay')]/div/div/mat-option")
 	private List<WebElement> apportioningMethodDropDownValues;
-	
+
 	@FindBy(xpath = "//mat-select[contains(@placeholder,'Apportion')]//div[contains(@class,'mat-select-value')]")
 	private WebElement apportioningMethod;
-	
+
 	@FindBy(xpath = "//mat-grid-tile[1]//h4/span")
 	private WebElement excessOrShortfallLabel;
-	
+
 	@FindBy(xpath = "//mat-grid-tile[1]//h4")
 	private WebElement excessOrShortfallValue;
-	
+
 	@FindBy(xpath = "//mat-grid-tile[3]//h4")
 	private WebElement applidExcessValue;
-	
+
 	@FindBy(xpath = "//mat-grid-tile[1]//i")
 	private WebElement excessOrShortfallText;
 
 	@FindBy(xpath = "//mat-select[contains(@name,'applyExcessTo')]//div[contains(@class,'mat-select-value')]")
 	private WebElement applyExcessOrShortFall;
-	
+
 	@FindBy(xpath = "//span[@class='mat-option-text']")
 	private WebElement applyExcessOrShortFallDrop;
-	
+
 	@FindBy(xpath = "//mat-dialog-container//form//h4[1]//div[2]")
 	private WebElement principalDueAmountInApportion;
-	
+
 	@FindBy(xpath = "//mat-dialog-container//form//h4[2]//div[2]")
 	private WebElement interestDueAmountInApportion;
-	
+
 	@FindBy(xpath = "//mat-dialog-container//form//h4[3]//div[2]")
 	private WebElement overdueAmountInApportion;
 
 	@FindBy(xpath = "//mat-dialog-container//form//input[@name='principalPaid']")
 	private WebElement principalApportioned;
 
-	
 	@FindBy(xpath = "//mat-dialog-container//form//input[@name='interestPaid']")
 	private WebElement interestApportioned;
 
-	
 	@FindBy(xpath = "//mat-dialog-container//form//input[@name='overdueInterestPayment']")
 	private WebElement overdueInterestApportioned;
 
-	
 	@FindBy(xpath = "//mat-dialog-container//form//button//span[contains(.,'SAVE')]")
 	private WebElement saveButtonModal2;
 
-	
 	@FindBy(xpath = "//mat-dialog-container//form//button//span[contains(.,'CANCEL')]")
 	private WebElement cancelButtonModal2;
 
@@ -254,7 +241,7 @@ public class RepaymentPage extends BasePage {
 	public WebElement getRepaymentModalHeading() {
 		return visibilityOf(repaymentModalHeading);
 	}
-	
+
 	public WebElement getDateLabel() {
 		return dateLabel;
 	}
@@ -294,7 +281,7 @@ public class RepaymentPage extends BasePage {
 	public WebElement getRepaymentDate() {
 		return visibilityOf(repaymentDate);
 	}
-	
+
 	public WebElement getTodayDate() {
 		return visibilityOf(todayDate);
 	}
@@ -322,8 +309,6 @@ public class RepaymentPage extends BasePage {
 	public void setRepaymentDate(String input) {
 		visibilityOf(repaymentDate).sendKeys(input);
 	}
-
-
 
 	public void clickcalendar() {
 		click(calendarbutton);
@@ -452,7 +437,7 @@ public class RepaymentPage extends BasePage {
 	}
 
 	public WebElement getNotifier() {
-		return  visibilityOf(notifier);
+		return visibilityOf(notifier);
 	}
 
 	public WebElement getApportioningMethod() {

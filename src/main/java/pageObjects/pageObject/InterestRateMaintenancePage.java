@@ -1,12 +1,9 @@
 package pageObjects.pageObject;
 
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import pageObjects.BasePage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class InterestRateMaintenancePage extends BasePage {
 

@@ -1,47 +1,43 @@
 package pageObjects.pageObject;
 
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import pageObjects.BasePage;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Quickaccesspage extends BasePage {
 
-public class Quickaccesspage extends BasePage{
-
-	@FindBy(xpath="//h3[text()='Quick access']/..")
+	@FindBy(xpath = "//h3[text()='Quick access']/..")
 	private WebElement quickaccess;
 
-	@FindBy(xpath="//fims-app//mat-toolbar//span//mat-icon[text()='menu']")
+	@FindBy(xpath = "//fims-app//mat-toolbar//span//mat-icon[text()='menu']")
 	private WebElement menu;
 
-	@FindBy(xpath="//h3[text()='Loan products']/..")
+	@FindBy(xpath = "//h3[text()='Loan products']/..")
 	private WebElement loanproducts;
 
-
-	@FindBy(xpath="//h3[text()='Interest Rate Maintenance']/..")
+	@FindBy(xpath = "//h3[text()='Interest Rate Maintenance']/..")
 	private WebElement intrstratemaintenance;
-	
-	@FindBy(xpath="//h3[text()='Index Setup']/..")
+
+	@FindBy(xpath = "//h3[text()='Index Setup']/..")
 	private WebElement indexRate;
 
-	@FindBy(xpath="//h3[text()='Customer']/..")
+	@FindBy(xpath = "//h3[text()='Customer']/..")
 	private WebElement customer;
 
-	@FindBy(xpath="//h3[text()='Fee Set up']/..")
+	@FindBy(xpath = "//h3[text()='Fee Set up']/..")
 	private WebElement feesetup;
 
-	@FindBy(xpath="//h3[text()='Accounting']/..")
+	@FindBy(xpath = "//h3[text()='Accounting']/..")
 	private WebElement accounting;
 
-	@FindBy(xpath="//mat-icon[text()='account_circle']/../..")
+	@FindBy(xpath = "//mat-icon[text()='account_circle']/../..")
 	private WebElement account;
 
-	@FindBy(xpath="//span[text()='Sign Out']/..")
+	@FindBy(xpath = "//span[text()='Sign Out']/..")
 	private WebElement signout;
 
-	@FindBy(xpath="//h3[text()='Batch Jobs']/..")
+	@FindBy(xpath = "//h3[text()='Batch Jobs']/..")
 	private WebElement batchjobs;
 
 	@FindBy(xpath = "//mat-icon[contains(text(),'account_circle')]")
@@ -50,13 +46,13 @@ public class Quickaccesspage extends BasePage{
 	@FindBy(xpath = "//span[contains(text(),'User Preference')]")
 	private WebElement UserPreferenceButton;
 
-	@FindBy(xpath ="//mat-label[contains(text(),'Date Format')]")
+	@FindBy(xpath = "//mat-label[contains(text(),'Date Format')]")
 	private WebElement dateformattitle;
 
-	@FindBy(xpath ="//mat-label[contains(text(),'Thousand Separator')]")
+	@FindBy(xpath = "//mat-label[contains(text(),'Thousand Separator')]")
 	private WebElement thousandseperatortitle;
 
-	@FindBy(xpath ="//mat-label[contains(text(),'Decimal Separator')]")
+	@FindBy(xpath = "//mat-label[contains(text(),'Decimal Separator')]")
 	private WebElement decimalseperatortitle;
 
 	@FindBy(xpath = "//mat-select[@formcontrolname=\"dateFormat\"]/div/div[2]")
@@ -89,7 +85,7 @@ public class Quickaccesspage extends BasePage{
 	public WebElement getIntrstratemaintenance() {
 		return intrstratemaintenance;
 	}
-	
+
 	public WebElement getIndexRate() {
 		return indexRate;
 	}
@@ -157,9 +153,5 @@ public class Quickaccesspage extends BasePage{
 	public WebElement getSavePreferencesButton() {
 		return savePreferencesButton;
 	}
-	
-	
-	
 
 }
-

@@ -179,28 +179,29 @@ public class CommonComponents extends pageObjects.pageObject.CommonComponents {
 			Assert.fail("Entry not available in table!");
 		}
 	}
-	
+
 	public void clickOnMatTableElement(String baseString, List<WebElement> key, List<WebElement> clickCell) {
-		for(int i=0; i<key.size(); i++) {
-			if(baseString.equalsIgnoreCase(key.get(i).getText())) {
+		for (int i = 0; i < key.size(); i++) {
+			if (baseString.equalsIgnoreCase(key.get(i).getText())) {
 				clickCell.get(i).click();
 				break;
 			}
 		}
 	}
-	
-	public void clickOnTableElement(List<WebElement> tableData, String baseString, int nextClickCell) throws InterruptedException {
-		for(int i=0; i<tableData.size(); i++) {
-			if(tableData.get(i).getText().contains(baseString)) {
-				tableData.get(i+nextClickCell).click();
+
+	public void clickOnTableElement(List<WebElement> tableData, String baseString, int nextClickCell)
+			throws InterruptedException {
+		for (int i = 0; i < tableData.size(); i++) {
+			if (tableData.get(i).getText().contains(baseString)) {
+				tableData.get(i + nextClickCell).click();
 				break;
 			}
 		}
 	}
-	
+
 	public void clickOnTableElement(String baseString) throws InterruptedException {
-		for(int i=0; i<getTableData().size(); i++) {
-			if(baseString.equalsIgnoreCase(getTableData().get(i).getText())) {
+		for (int i = 0; i < getTableData().size(); i++) {
+			if (baseString.equalsIgnoreCase(getTableData().get(i).getText())) {
 				getTableData().get(i).click();
 				break;
 			}

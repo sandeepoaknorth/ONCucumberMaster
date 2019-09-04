@@ -1,23 +1,11 @@
 package runners;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.junit.runner.RunWith;
-import org.testng.annotations.AfterClass;
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import pageObjects.BasePage;
 
-@RunWith(Cucumber.class)
-
-@CucumberOptions(
-		features = { "src/test/java/resources/features/" },
-		glue = {"stepDefinitions" },
-		monochrome = true,
-		tags = {}, 
-		plugin = { "pretty", "html:target/cucumber", "json:target/cucumber.json",
+@CucumberOptions(glue = "stepDefinitions", features = {
+		"target/parallel/features/[CUCABLE:FEATURE].feature" }, monochrome = true, tags = { "~@ignore" }, plugin = {
+				"pretty", "html:target/cucumber", "json:target/cucumber-report/[CUCABLE:RUNNER].json",
 				"com.cucumber.listener.ExtentCucumberFormatter:output/report.html" })
 
 public class MainRunner extends AbstractTestNGCucumberTests {

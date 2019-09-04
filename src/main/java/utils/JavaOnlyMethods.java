@@ -2,17 +2,14 @@ package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.testng.annotations.DataProvider;
 
 public class JavaOnlyMethods {
 	public static DataFormatter formatter = new DataFormatter();
@@ -65,9 +62,9 @@ public class JavaOnlyMethods {
 		}
 		return sb.toString();
 	}
-	
+
 	public int getRandomNum(int n) {
-		int num = (int) (n*Math.random());
+		int num = (int) (n * Math.random());
 		return num;
 	}
 

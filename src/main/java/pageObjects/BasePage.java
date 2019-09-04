@@ -9,16 +9,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
-import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -195,7 +192,7 @@ public class BasePage extends DriverFactory {
 			Assert.fail("Unable to send keys to WebElement, Exception: " + e.getMessage());
 		}
 	}
-	
+
 	public void actionSendKeys(WebElement element, String textToSend) {
 		try {
 			Actions a = new Actions(driver);
@@ -204,7 +201,7 @@ public class BasePage extends DriverFactory {
 			a.build().perform();
 		} catch (Exception e) {
 			System.out.println("Unable to locate WebElement: " + "<" + element.toString()
-			+ "> and send the following keys: " + textToSend);
+					+ "> and send the following keys: " + textToSend);
 			Assert.fail("Unable to send keys to WebElement, Exception: " + e.getMessage());
 		}
 	}
@@ -239,15 +236,14 @@ public class BasePage extends DriverFactory {
 			Assert.fail("Unable to manually scroll to WebElement, Exception: " + e.getMessage());
 		}
 	}
-	
+
 	public void jsPageScrollIntoView(WebElement element) {
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView(true);", element);
 			System.out.println("Succesfully scrolled to the element");
 		} catch (Exception e) {
-			System.out
-					.println("Unable to scroll to element");
+			System.out.println("Unable to scroll to element");
 			Assert.fail("Unable to manually scroll to WebElement, Exception: " + e.getMessage());
 		}
 	}
@@ -293,14 +289,14 @@ public class BasePage extends DriverFactory {
 			visibilityOf(element);
 			count++;
 			if (count == 50) {
-			System.out.println("WebElement is NOT visible, using locator: " + "<" + element.toString() + ">");
-			Assert.fail("WebElement is NOT visible, Exception: " + e.getMessage());
+				System.out.println("WebElement is NOT visible, using locator: " + "<" + element.toString() + ">");
+				Assert.fail("WebElement is NOT visible, Exception: " + e.getMessage());
 			}
 		}
 		return element;
 	}
 
-	public List<WebElement> visibilityOf(List<WebElement> element){
+	public List<WebElement> visibilityOf(List<WebElement> element) {
 //		Thread.sleep(1000);
 		int count = 0;
 		try {
@@ -376,7 +372,7 @@ public class BasePage extends DriverFactory {
 			return e.getMessage();
 		}
 	}
-	
+
 	public void assertString(WebElement element, String prop) {
 		try {
 			softAssert.assertEquals(element.getText(), prop, "Actual verbiage mis-matches with expected: " + prop);
@@ -396,7 +392,7 @@ public class BasePage extends DriverFactory {
 		try {
 			for (int i = 0; i < size; i++) {
 				softAssert.assertEquals(element.get(i).getText(), values[i], values[i] + " verbiage is wrong.");
-			} 
+			}
 		} finally {
 			softAssert.assertAll();
 		}
@@ -514,9 +510,9 @@ public class BasePage extends DriverFactory {
 		File dest = new File(System.getProperty("user.dir") + "\\output\\" + date.toString() + ".html");
 		copyFileUsingStream(source, dest);
 	}
-	
-	 public void zoomInZoomOut(String value){
-		 JavascriptExecutor js = (JavascriptExecutor) driver;
-		 js.executeScript("document.body.style.zoom='" + value +"'");
-		 }
+
+	public void zoomInZoomOut(String value) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.body.style.zoom='" + value + "'");
+	}
 }

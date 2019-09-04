@@ -3,14 +3,18 @@ package utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.asserts.SoftAssert;
 
@@ -28,13 +32,19 @@ public class DriverFactory {
 	protected Properties prop = new Properties();
 	protected SoftAssert softAssert = new SoftAssert();
 	String browserName;
+
 	protected DriverFactory() {
 		try {
-			FileInputStream fi = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\Config.properties");
-			FileInputStream loan = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\LoanAccountRepayment.properties");
-			FileInputStream commonComponents = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\CommonComponents.properties");
-			FileInputStream indexRate = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\IndexRate.properties");
-			FileInputStream interestRateMaintenance = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\InterestRateMaintenance.properties");
+			FileInputStream fi = new FileInputStream(
+					System.getProperty("user.dir") + "\\src\\main\\java\\properties\\Config.properties");
+			FileInputStream loan = new FileInputStream(
+					System.getProperty("user.dir") + "\\src\\main\\java\\properties\\LoanAccountRepayment.properties");
+			FileInputStream commonComponents = new FileInputStream(
+					System.getProperty("user.dir") + "\\src\\main\\java\\properties\\CommonComponents.properties");
+			FileInputStream indexRate = new FileInputStream(
+					System.getProperty("user.dir") + "\\src\\main\\java\\properties\\IndexRate.properties");
+			FileInputStream interestRateMaintenance = new FileInputStream(System.getProperty("user.dir")
+					+ "\\src\\main\\java\\properties\\InterestRateMaintenance.properties");
 			try {
 				prop.load(fi);
 				prop.load(loan);
@@ -84,6 +94,12 @@ public class DriverFactory {
 					driver.manage().window().maximize();
 				}
 				break;
+				
+			case "remote":
+				if (null == driver) {
+					driver= new RemoteWebDriver(new URL("http://172.10.1.168:4444/wd/hub"), new ChromeOptions());
+				}
+				break;
 			}
 		} catch (Exception e) {
 			System.out.println("Unable to load browser: " + e.getMessage());
@@ -94,7 +110,8 @@ public class DriverFactory {
 			repaymentPage = PageFactory.initElements(driver, pageObjects.pageActions.RepaymentPage.class);
 			loginPage = PageFactory.initElements(driver, pageObjects.pageActions.Loginpage.class);
 			quickAccessPage = PageFactory.initElements(driver, pageObjects.pageActions.Quickaccesspage.class);
-			interestRateMaintenancePage = PageFactory.initElements(driver, pageObjects.pageActions.InterestRateMaintenancePage.class);
+			interestRateMaintenancePage = PageFactory.initElements(driver,
+					pageObjects.pageActions.InterestRateMaintenancePage.class);
 			indexRatePage = PageFactory.initElements(driver, pageObjects.pageActions.IndexRatePage.class);
 			commonComponentsPage = PageFactory.initElements(driver, pageObjects.pageActions.CommonComponents.class);
 			transactionPage = PageFactory.initElements(driver, pageObjects.pageActions.TransactionPage.class);

@@ -24,10 +24,11 @@ public class ReadConfigFile {
 			return "";
 		return prop.getProperty("browser");
 	}
-	
+
 	public String readPropertiesFileForCMD(String term) throws IOException {
 		Properties p = new Properties();
-		FileInputStream fi = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\config.properties");
+		FileInputStream fi = new FileInputStream(
+				System.getProperty("user.dir") + "\\src\\main\\java\\properties\\config.properties");
 		p.load(fi);
 		return p.getProperty(term.toLowerCase());
 	}
